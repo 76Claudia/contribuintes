@@ -57,13 +57,5 @@ public class TaxPayer {
 	public void setEducationSpending(double educationSpending) {
 		this.educationSpending = educationSpending;
 	}
-	
-	public double salaryTax() {
-		if(salaryIncome > 3000) {
-			return  
-		}
-	}
-	
-	
 
 }
