@@ -19,7 +19,7 @@ public class Program {
 		System.out.println();
 		
 		for(int i=0; i<N; i++) {
-			System.out.println("Digite os dados do " + (i+1) + "o" +" contribuinte: ");
+			System.out.printf("Digite os dados do %do contribuinte: \n", i+1);
 			System.out.print("Renda anual com salario: ");
 			double salaryIncome = sc.nextDouble();
 			System.out.print("Renda anual com prestacao de servico: ");
@@ -30,14 +30,20 @@ public class Program {
 			double healthSpending = sc.nextDouble();
 			System.out.print("Gastos educacionais: ");
 			double educationSpending = sc.nextDouble();
+			System.out.println();
 			
 			TaxPayer tax =  new TaxPayer(salaryIncome, servicesIncome, capitalIncome, healthSpending, educationSpending);
 			
 			list.add(tax);
 			
 			
+			
 		}
-
+		for(int i=0; i<N; i++) {
+		System.out.printf("Resumo do %do contribuinte:\n", i+1);
+	    System.out.print(list.toString());
+			
+		}
 		
 		sc.close();
 	}

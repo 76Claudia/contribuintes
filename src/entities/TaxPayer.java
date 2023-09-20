@@ -1,19 +1,20 @@
 package entities;
 
 public class TaxPayer {
-	
+
 	private double salaryIncome;
 	private double servicesIncome;
 	private double capitalIncome;
 	private double healthSpending;
 	private double educationSpending;
-	
+
 	public TaxPayer() {
-		
+
 	}
+
 	public TaxPayer(double salaryIncome, double servicesIncome, double capitalIncome, double healthSpending,
 			double educationSpending) {
-		
+
 		this.salaryIncome = salaryIncome;
 		this.servicesIncome = servicesIncome;
 		this.capitalIncome = capitalIncome;
@@ -60,28 +61,24 @@ public class TaxPayer {
 	public void setEducationSpending(double educationSpending) {
 		this.educationSpending = educationSpending;
 	}
-	
+
 	public double salaryTax() {
 		double monthtlyIncome = salaryIncome / 12.0;
-		if(salaryIncome < 3000.0) {
-			double salaryTax = 0.0;
+		if (monthtlyIncome < 3000.0) {
+			return 0.0;
+		} else if (monthtlyIncome < 5000.0) {
+			return salaryIncome * 0.1;
+
+		} else {
+			return salaryIncome * 0.2;
 		}
-		else if(salaryIncome < 5000.0) {
-			double salaryTax = salaryIncome * 0.1;
-			
-			}
-		
-		else {
-			 double salaryTax = salaryIncome * 0.2;
-		}
-		     return salaryTax();
-		
-		
-	}	
-	public double servicesTax() {
-		return  servicesIncome * 0.15;
+
 	}
-	
+
+	public double servicesTax() {
+		return servicesIncome * 0.15;
+	}
+
 	public double capitalTax() {
 		return capitalIncome * 0.2;
 	}
@@ -89,25 +86,26 @@ public class TaxPayer {
 	public double grossTax() {
 		return salaryTax() + servicesTax() + capitalTax();
 	}
-	public double taxRebate() {
-	 double maximumDeductible = grossTax() * 0.3;
 
-	double deductibleExpenses = 0;
-	if(deductibleExpenses > maximumDeductible) {
-		return maximumDeductible;
+	public double deductibleExpenses() {
+		return healthSpending + educationSpending;
 	}
-	else 
-		return deductibleExpenses;
+	public double taxRebate() {
+		double maximumDeductible = grossTax() * 0.3;
+		
+		if (deductibleExpenses() > maximumDeductible) {
+			return maximumDeductible;
+		} else
+			return deductibleExpenses();
 	}
+
 	public double netTax() {
 		return grossTax() - taxRebate();
-			
+
 	}
-	
-	
-	
+	public String toString() {
+		return "Imposto bruto total: " + String.format("%.2f\n", grossTax())
+		       + "Abatimento: " + String.format("%.2f\n", taxRebate())
+		       + "Imposto devido: " + String.format("%.2f\n", netTax());
+	}
 }
-
-
-	
-
