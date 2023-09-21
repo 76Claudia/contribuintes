@@ -36,16 +36,15 @@ public class Program {
 			
 			list.add(tax);
 			
-			
-			
 		}
 		for(int i=0; i<N; i++) {
 		System.out.printf("Resumo do %do contribuinte:\n", i+1);
-	    System.out.print(list.toString());
-			
-		}
 		
-		sc.close();
+	    System.out.print(list.toString());
+	 
+		}
+		   sc.close();
 	}
-
 }
+	
+
